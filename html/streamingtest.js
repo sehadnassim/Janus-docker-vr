@@ -180,12 +180,12 @@ $(document).ready(function() {
 									var addButtons = false;
 									if($('#remotevideo').length === 0) {
 										addButtons = true;
-										$('#stream').append('<video class="rounded centered hide" id="remotevideo" width=320 height=240 autoplay playsinline/>');
+										$('#stream').append('<a-scene embedded> '+'<a-videosphere rotation="0 180 0" src="#remotevideo"  play-on-vrdisplayactivate-or-enter-vr></a-videosphere>' +'<a-camera user-height="0" wasd-controls-enabled="false" arrow-key-rotation> </a-camera><a-assets>'+'</a-assets></a-scene>'+'<video class="rounded centered hide" id="remotevideo" width=320 height=240 autoplay playsinline/> ');
 										// Show the stream and hide the spinner when we get a playing event
 										$("#remotevideo").bind("playing", function () {
 											$('#waitingvideo').remove();
-											if(this.videoWidth)
-												$('#remotevideo').removeClass('hide').show();
+										         $('#remotevideo').removeClass('hide');
+											
 											if(spinner !== null && spinner !== undefined)
 												spinner.stop();
 											spinner = null;
